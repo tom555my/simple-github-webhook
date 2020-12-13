@@ -7,6 +7,6 @@
     "micro": "^9.3.4"
   },
   "scripts": {
-    "start": "micro"
+    "start": "micro -l tcp://0.0.0.0:5000"
   }
 }
