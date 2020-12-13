@@ -1,4 +1,7 @@
-import micro from 'micro';
-import index from './index.js';
+const http = require('http');
+const micro = require('micro');
+const index = require('./index');
 
-micro(index);
+const server = new http.Server(micro(index));
+
+server.listen(5000);
