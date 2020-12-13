@@ -1,0 +1,12 @@
+{
+  "name": "simple-github-webhook",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "micro": "^9.3.4"
+  },
+  "scripts": {
+    "start": "micro"
+  }
+}
