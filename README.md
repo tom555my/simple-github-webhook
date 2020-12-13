@@ -6,8 +6,8 @@ This project is aimed at to create simple github webhook server for quick and di
 
 ## Tech stack
 
-* NodeJs
-* [Vercel/Micro](https://github.com/vercel/micro)
+- NodeJs
+- [Vercel/Micro](https://github.com/vercel/micro)
 
 ## Usage
 
@@ -15,10 +15,12 @@ This project is aimed at to create simple github webhook server for quick and di
 
 ```json
 {
-  [branch name]: {
-    "cmd": [
-      // List of string of command
-    ]
+  [repo name]: {
+    [branch name]: {
+      "cmd": [
+        // List of string of command
+      ]
+    }
   }
 }
 
