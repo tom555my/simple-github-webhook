@@ -50,7 +50,7 @@ module.exports = async (req, res) => {
     try {
       console.log(`Step ${index + 1}: ${command}`);
       const output = await execAsync(command);
-      send(res, 200, { message: output });
+      console.log(output);
     } catch (error) {
       send(res, 400, {
         error,
@@ -58,7 +58,7 @@ module.exports = async (req, res) => {
       return;
     }
   }
-  res.end('Done exec');
+  send(res, 200, { success: true });
 };
 
 // cd ~/chatbot-server && bash deploy.sh
