@@ -1,6 +1,6 @@
-const { json, send } = require("micro");
-const config = require("./config.json");
-const exec = require("child_process").exec;
+const { json, send } = require('micro');
+const config = require('./config.json');
+const exec = require('child_process').exec;
 
 const execAsync = (command) =>
   new Promise((resolve, reject) => {
@@ -21,11 +21,11 @@ module.exports = async (req, res) => {
   const body = await json(req);
   if (body.ref == null) {
     send(res, 400, {
-      error: "missing-ref",
+      error: 'missing-ref',
     });
     return;
   }
-  const branch = body.ref.split("/")[body.ref.split("/").length - 1];
+  const branch = body.ref.split('/')[body.ref.split('/').length - 1];
   if (!Object.keys(config).includes(branch)) {
     send(res, 400, {
       error: `No CMD for branch ${branch}`,
@@ -44,7 +44,7 @@ module.exports = async (req, res) => {
       return;
     }
   }
-  res.end("Done exec");
+  res.end('Done exec');
 };
 
 // cd ~/chatbot-server && bash deploy.sh
