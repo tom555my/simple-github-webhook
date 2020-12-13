@@ -18,7 +18,17 @@ const execAsync = (command) =>
   });
 
 module.exports = async (req, res) => {
+  if (req.method !== 'POST') {
+    send(res, 404, 'Not Found');
+    return;
+  }
+  const repos = Object.keys(config);
   const body = await json(req);
+  const repo = body.repository.name;
+  if (!repos.includes(repo)) {
+    send(res, 404, 'Not Found');
+    return;
+  }
   if (body.ref == null) {
     send(res, 400, {
       error: 'missing-ref',
@@ -26,14 +36,15 @@ module.exports = async (req, res) => {
     return;
   }
   const branch = body.ref.split('/')[body.ref.split('/').length - 1];
-  if (!Object.keys(config).includes(branch)) {
+  if (!Object.keys(config[repo]).includes(branch)) {
     send(res, 400, {
       error: `No CMD for branch ${branch}`,
     });
     return;
   }
-  for (let index = 0; index < config[branch].cmd.length; index++) {
-    const command = config[branch].cmd[index];
+  const commands = config[repo][branch].cmd;
+  for (let index = 0; index < commands.length; index++) {
+    const command = commands[index];
     try {
       const output = await execAsync(command);
       send(res, 200, { message: output });
