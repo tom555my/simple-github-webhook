@@ -43,7 +43,7 @@ This project is aimed at to create simple github webhook server for quick and di
 
 3. Config your github repo webhook
 
-https://github.com/\<username>/\<your-repo>/settings/hooks
+https://github.com/%username%/%your-repo%/settings/hooks
 
 # License
 
