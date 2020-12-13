@@ -26,15 +26,17 @@ This project is aimed at to create simple github webhook server for quick and di
 
 // For example
 {
-  "main": {
-    "cmd": [
-      "cd /home/tom555my/repo/simple-github-webhook",
-      "git checkout main",
-      "git pull origin main",
-      "yarn",
-      "yarn build",
-      "yarn start"
-    ]
+  "simple-github-webhook": {
+    "main": {
+      "cmd": [
+        "cd /home/tom555my/repo/simple-github-webhook",
+        "git checkout main",
+        "git pull origin main",
+        "yarn",
+        "yarn build",
+        "yarn start"
+      ]
+    }
   }
 }
 ```
