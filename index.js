@@ -6,10 +6,12 @@ const execAsync = (command) =>
   new Promise((resolve, reject) => {
     exec(command, (error, stdout, stderr) => {
       if (error) {
+        console.error(error);
         reject(error.message);
         return;
       }
       if (stderr) {
+        console.error(stderr);
         reject(stderr);
         return;
       }
