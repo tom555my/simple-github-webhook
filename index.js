@@ -6,12 +6,10 @@ const execAsync = (command) =>
   new Promise((resolve, reject) => {
     exec(command, (error, stdout, stderr) => {
       if (error) {
-        console.error(error);
         reject(error.message);
         return;
       }
       if (stderr) {
-        console.error(stderr);
         reject(stderr);
         return;
       }
@@ -54,10 +52,7 @@ module.exports = async (req, res) => {
       const output = await execAsync(command);
       console.log(output);
     } catch (error) {
-      send(res, 400, {
-        error,
-      });
-      return;
+      console.error(error);
     }
   }
   send(res, 200, { success: true });
