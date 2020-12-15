@@ -2,9 +2,9 @@ const { json, send } = require('micro');
 const config = require('./config.json');
 const exec = require('child_process').exec;
 
-const execAsync = (command) =>
+const execAsync = (command, cwd) =>
   new Promise((resolve, reject) => {
-    exec(command, (error, stdout, stderr) => {
+    exec(command, { cwd }, (error, stdout, stderr) => {
       if (error) {
         reject(error.message);
         return;
@@ -49,7 +49,7 @@ module.exports = async (req, res) => {
     const command = commands[index];
     try {
       console.log(`Step ${index + 1}: ${command}`);
-      const output = await execAsync(command);
+      const output = await execAsync(command, config[repo]['cwd']);
       console.log(output);
     } catch (error) {
       console.error(error);

@@ -17,6 +17,7 @@ This project is aimed at to create simple github webhook server for quick and di
 {
   [repo name]: {
     [branch name]: {
+      "cwd": "<where should the program run>",
       "cmd": [
         // List of string of command
       ]
@@ -28,8 +29,8 @@ This project is aimed at to create simple github webhook server for quick and di
 {
   "simple-github-webhook": {
     "main": {
+      "cwd": "/home/tom555my/repo/simple-github-webhook",
       "cmd": [
-        "cd /home/tom555my/repo/simple-github-webhook",
         "git checkout main",
         "git pull origin main",
         "yarn",
