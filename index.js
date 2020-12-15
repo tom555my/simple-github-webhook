@@ -45,11 +45,12 @@ module.exports = async (req, res) => {
     return;
   }
   const commands = config[repo][branch].cmd;
+  const cwd = config[repo][branch]['cwd']
   for (let index = 0; index < commands.length; index++) {
     const command = commands[index];
     try {
       console.log(`Step ${index + 1}: ${command}`);
-      const output = await execAsync(command, config[repo]['cwd']);
+      const output = await execAsync(command, cwd);
       console.log(output);
     } catch (error) {
       console.error(error);
